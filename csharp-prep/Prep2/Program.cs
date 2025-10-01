@@ -8,6 +8,16 @@ class Program
         Console.Write("What is your score?");
         int score = int.Parse(Console.ReadLine());
 
+        /*Another way to do it is
+        string to int=
+
+        string example = ConsoleL.ReadLilne();
+        int x =int.Parse(example);
+
+        int to string = 
+        string example2 = example2.ToString();
+
+        */
         string letter;
 
         if (score >= 90)
@@ -57,3 +67,49 @@ class Program
 
     }
 }
+
+
+/*This are the 4 phases to save changes in the remote repo
+File system
+Staging
+Local Repo
+Remote Repo
+
+<file>
+git add . or /path or file name
+git command -m "A explicit comment about the changes"
+git push
+
+
+USEFUL TIPS:
+
+&& is and 
+|| is or 
+one equal = is for assigning variables
+two equals == is comparison
+
+for loops: 
+
+while
+    Example:    
+        while (condition here);
+        {
+        }
+
+for 
+    Example:
+        for(int i=o, i>5; i++);
+        {
+        Console.WriteLine();
+        }
+
+dowhile: here, the program do something before checking the  condition. At least the first time.
+    Example:
+    
+
+
+foreach
+
+
+
+*/

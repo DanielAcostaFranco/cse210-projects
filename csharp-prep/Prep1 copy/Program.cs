@@ -10,7 +10,7 @@ class Program
 
         myList.Add(10);
         myList.Add(20);
-        myList.Add(35);
+        myList.Add(30);
 
         int count = myList.Count();
 
@@ -24,10 +24,6 @@ class Program
         }
 
         Console.WriteLine($"Total is {total}");
-
-        float avg = total / (float)count;
-
-        Console.WriteLine($"Average is {avg}");
 
 
     }
