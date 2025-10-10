@@ -4,10 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Journal journal = new Journal();
-        journal.StartJournal();
+        Console.WriteLine("Hello Develop02 World!");
 
     }
 }
-
-
