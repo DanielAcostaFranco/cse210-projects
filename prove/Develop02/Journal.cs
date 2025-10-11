@@ -9,7 +9,6 @@ public class Journal
     string menuresponse;
     string filePath;
 
-    // ✅ Nuevo: función para elegir saludo según la hora
     private static string GreetingForNow()
     {
         int h = DateTime.Now.Hour;
@@ -99,4 +98,3 @@ public class Journal
         //_entries = linesArray.ToList();
     }
 }
-// load, display, write, save, quit

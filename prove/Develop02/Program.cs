@@ -1,11 +1,11 @@
 using System;
-using System.Text; // ← necesario para mostrar emojis en consola
+using System.Text;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.OutputEncoding = Encoding.UTF8; // ← habilita soporte para emojis
+        Console.OutputEncoding = Encoding.UTF8;
         Journal journal = new Journal();
         journal.StartJournal();
     }

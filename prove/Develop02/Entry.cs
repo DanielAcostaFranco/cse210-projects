@@ -6,7 +6,6 @@ public class Entry
     static DateTime theCurrentTime = DateTime.Now;
     static DateTime datePartOnly = theCurrentTime.Date;
 
-    // 👇 función que devuelve un emoji según la hora del día
     private static string EmojiForNow()
     {
         int hour = DateTime.Now.Hour;
