@@ -5,14 +5,23 @@ using System.Linq;
 
 public class Journal
 {
-
     public List<Entry> _entries = new List<Entry>();
     string menuresponse;
     string filePath;
 
+    // ✅ Nuevo: función para elegir saludo según la hora
+    private static string GreetingForNow()
+    {
+        int h = DateTime.Now.Hour;
+        if (h < 12) return "Good morning 🌞";
+        if (h < 18) return "Good afternoon 🌅";
+        return "Good evening 🌙";
+    }
+
     public void StartJournal()
     {
         Console.WriteLine("");
+        Console.WriteLine($"{GreetingForNow()}!");
         Console.WriteLine("Welcome to your journal, please choose one of the options using the number. ");
         Console.WriteLine("1. Write");
         Console.WriteLine("2. Display");
@@ -67,7 +76,6 @@ public class Journal
         }
     }//End of StartJournal
 
-
     public void DisplayEntries()
     {
         foreach (Entry _entry in _entries)
@@ -89,7 +97,6 @@ public class Journal
 
         // Convert the string array to a List<string>
         //_entries = linesArray.ToList();
-
     }
 }
 // load, display, write, save, quit
