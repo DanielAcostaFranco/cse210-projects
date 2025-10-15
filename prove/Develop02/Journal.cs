@@ -1,100 +1,121 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 public class Journal
 {
-    public List<Entry> _entries = new List<Entry>();
-    string menuresponse;
-    string filePath;
-
-    private static string GreetingForNow()
-    {
-        int h = DateTime.Now.Hour;
-        if (h < 12) return "Good morning 🌞";
-        if (h < 18) return "Good afternoon 🌅";
-        return "Good evening 🌙";
-    }
+    List<Entry> _entries = new List<Entry>();
+    Prompts _prompts = new Prompts();
 
     public void StartJournal()
     {
-        Console.WriteLine("");
-        Console.WriteLine($"{GreetingForNow()}!");
-        Console.WriteLine("Welcome to your journal, please choose one of the options using the number. ");
-        Console.WriteLine("1. Write");
-        Console.WriteLine("2. Display");
-        Console.WriteLine("3. Save");
-        Console.WriteLine("4. Load");
-        Console.WriteLine("5. Quit");
+        string menuresponse = "";
 
-        menuresponse = Console.ReadLine();
-
-        if (menuresponse == "1") //Write
+        while (menuresponse != "5")
         {
-            Entry entry1 = new Entry();
-            Console.WriteLine($"{entry1._date}\nPrompt: {entry1._prompt}");
-            string response1 = Console.ReadLine();
-            entry1._response = response1;
-            _entries.Add(entry1);
+            Console.WriteLine();
+            Console.WriteLine(Greeting());
+            Console.WriteLine("Welcome to your journal Daniel:");
+            Console.WriteLine("1. Write");
+            Console.WriteLine("2. Display");
+            Console.WriteLine("3. Save");
+            Console.WriteLine("4. Load");
+            Console.WriteLine("5. Quit");
 
-            StartJournal();
-        }
-        else if (menuresponse == "2") //Display List
-        {
-            DisplayEntries();
-            StartJournal();
-        }
-        else if (menuresponse == "3") //Save
-        {
-            Console.WriteLine("Enter the name of your file: ");
-            string filename = Console.ReadLine();
+            menuresponse = Console.ReadLine();
 
-            using (StreamWriter outputFile = new StreamWriter(filename))
+            if (menuresponse == "1")
             {
-                foreach (Entry entry in _entries)
-                    outputFile.WriteLine(entry.ToLine());
+                WriteEntry();
             }
-
-            Console.WriteLine($"{filename} has been successfully saved! ");
-            StartJournal();
-        }
-        else if (menuresponse == "4") //Load
-        {
-            LoadsFile();
-            StartJournal();
-        }
-        else if (menuresponse == "5") //Quit
-        {
-            Console.WriteLine("Good Bye");
-        }
-        else //Restart
-        {
-            Console.WriteLine("try again");
-            StartJournal();
-        }
-    }//End of StartJournal
-
-    public void DisplayEntries()
-    {
-        foreach (Entry _entry in _entries)
-        {
-            Console.WriteLine($"{_entry}");
+            else if (menuresponse == "2")
+            {
+                DisplayEntries();
+            }
+            else if (menuresponse == "3")
+            {
+                SaveToFile();
+            }
+            else if (menuresponse == "4")
+            {
+                LoadFromFile();
+            }
+            else if (menuresponse == "5")
+            {
+                Console.WriteLine("Good Bye");
+            }
+            else
+            {
+                Console.WriteLine("Invalid option, try again.");
+            }
         }
     }
 
-    public void LoadsFile()
+    void WriteEntry()
     {
-        Console.WriteLine($"Enter the path of the file");
-        filePath = Console.ReadLine();
+        string date = DateTime.Now.ToString("MM/dd/yyyy");
+        string prompt = _prompts.RandomizePrompt() + " ";
 
-        // Read all lines from the file into a string array
-        string[] linesArray = File.ReadAllLines(filePath);
+        Console.WriteLine(date + "\nPrompt: " + prompt);
+        string response = Console.ReadLine();
 
-        //convert string to entry, then add entrys to _entries List
-        _entries = linesArray.Select(line => Entry.FromLine(line)).ToList();
+        Entry entry = new Entry();
+        entry._date = date;
+        entry._prompt = prompt;
+        entry._response = response;
 
-        // Convert the string array to a List<string>
-        //_entries = linesArray.ToList();
+        _entries.Add(entry);
     }
+
+    void DisplayEntries()
+    {
+        foreach (Entry e in _entries)
+        {
+            Console.WriteLine("[" + e._date + "] " + e._prompt);
+            Console.WriteLine(e._response);
+            Console.WriteLine();
+        }
+    }
+
+    void SaveToFile()
+    {
+        Console.WriteLine("Enter file name:");
+        string filename = Console.ReadLine();
+
+        using (StreamWriter file = new StreamWriter(filename))
+        {
+            foreach (Entry e in _entries)
+            {
+                file.WriteLine(e.ToLine());
+            }
+        }
+
+        Console.WriteLine("Saved!");
+    }
+
+    void LoadFromFile()
+    {
+        Console.WriteLine("Enter file name to load:");
+        string filename = Console.ReadLine();
+
+        string[] lines = File.ReadAllLines(filename);
+        _entries.Clear();
+
+        foreach (string line in lines)
+        {
+            Entry e = Entry.FromLine(line);
+            _entries.Add(e);
+        }
+
+        Console.WriteLine("Loaded!");
+    }
+
+    string Greeting()
+    {
+        int h = DateTime.Now.Hour;
+        if (h < 12) return "Good morning 🌞!";
+        else if (h < 18) return "Good afternoon 🌅!";
+        else return "Good evening 🌙!";
+    }
+
 }

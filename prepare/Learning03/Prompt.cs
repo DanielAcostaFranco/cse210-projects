@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 
 public class Prompts
+
 {
     List<string> _prompts = new List<string>
     {
@@ -14,9 +14,10 @@ public class Prompts
 
     Random random = new Random();
 
-    public string RandomizePrompt()
+    public string randomPrompt()
     {
-        int index = random.Next(0, _prompts.Count);
+        int numberprompt = random.Next(0, _prompts.Count);
         return _prompts[index];
     }
+
 }
