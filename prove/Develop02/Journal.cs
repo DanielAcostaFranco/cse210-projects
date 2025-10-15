@@ -104,6 +104,7 @@ public class Journal
         }
     }
 
+    // I added a greeting according to the time of the day.
     string Greeting()
     {
         int h = DateTime.Now.Hour;
