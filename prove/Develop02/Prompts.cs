@@ -14,7 +14,7 @@ public class Prompts
 
     Random random = new Random();
 
-    public string RandomizePrompt()
+    public string randomPrompt()
     {
         int index = random.Next(0, _prompts.Count);
         return _prompts[index];

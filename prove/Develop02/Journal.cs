@@ -44,17 +44,13 @@ public class Journal
             {
                 Console.WriteLine("Good Bye");
             }
-            else
-            {
-                Console.WriteLine("Invalid option, try again.");
-            }
         }
     }
 
     void WriteEntry()
     {
         string date = DateTime.Now.ToString("MM/dd/yyyy");
-        string prompt = _prompts.RandomizePrompt() + " ";
+        string prompt = _prompts.randomPrompt() + " ";
 
         Console.WriteLine(date + "\nPrompt: " + prompt);
         string response = Console.ReadLine();
