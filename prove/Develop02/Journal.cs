@@ -86,7 +86,7 @@ public class Journal
             }
         }
 
-        Console.WriteLine("Saved!");
+        Console.WriteLine("You Journal was successfully saved, Daniel!");
     }
 
     void LoadFromFile()
@@ -102,8 +102,6 @@ public class Journal
             Entry e = Entry.FromLine(line);
             _entries.Add(e);
         }
-
-        Console.WriteLine("Loaded!");
     }
 
     string Greeting()
