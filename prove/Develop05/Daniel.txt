@@ -1,0 +1,4 @@
+0
+SimpleGoal:hjg|jh kj|200|False
+EternalGoal:jh |kjhjk|200
+ChecklistGoal:lkh k|hkjhk |200|20|2000|0
