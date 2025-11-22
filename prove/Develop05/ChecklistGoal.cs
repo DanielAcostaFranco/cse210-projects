@@ -28,13 +28,13 @@ public class ChecklistGoal : Goal
         return _current >= _target ? _points + _bonus : _points;
     }
 
-    public override string GetDetailsString()
+    public override string GetDetails()
     {
         string mark = _current >= _target ? "[X]" : "[ ]";
         return mark + " " + _shortName + " (" + _description + ") -- Currently completed: " + _current + "/" + _target;
     }
 
-    public override string GetStringRepresentation()
+    public override string GetString()
     {
         return "ChecklistGoal:" + _shortName + "|" + _description + "|" + _points + "|" + _bonus + "|" + _target + "|" + _current;
     }

@@ -16,8 +16,8 @@ public abstract class Goal
     }
 
     public abstract int RecordEvent();
-    public abstract string GetDetailsString();
-    public abstract string GetStringRepresentation();
+    public abstract string GetDetails();
+    public abstract string GetString();
 
     public static Goal CreateNewGoal()
     {
@@ -53,7 +53,7 @@ public abstract class Goal
     {
         Console.WriteLine("\nYour goals are:\n");
         for (int i = 0; i < goals.Count; i++)
-            Console.WriteLine((i + 1) + ". " + goals[i].GetDetailsString());
+            Console.WriteLine((i + 1) + ". " + goals[i].GetDetails());
     }
 
     public static void SaveGoals(List<Goal> goals, int score)
@@ -67,7 +67,7 @@ public abstract class Goal
         {
             writer.WriteLine(score);
             foreach (Goal goal in goals)
-                writer.WriteLine(goal.GetStringRepresentation());
+                writer.WriteLine(goal.GetString());
         }
         Console.WriteLine("Goals saved to '" + filename + "'.\n");
     }

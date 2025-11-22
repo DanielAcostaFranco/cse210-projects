@@ -22,12 +22,12 @@ public class SimpleGoal : Goal
         return _points;
     }
 
-    public override string GetDetailsString()
+    public override string GetDetails()
     {
         return _isComplete ? "[X] " : "[ ] " + _shortName + " (" + _description + ")";
     }
 
-    public override string GetStringRepresentation()
+    public override string GetString()
     {
         return "SimpleGoal:" + _shortName + "|" + _description + "|" + _points + "|" + _isComplete;
     }

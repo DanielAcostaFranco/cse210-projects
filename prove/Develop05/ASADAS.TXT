@@ -1,0 +1,4 @@
+0
+SimpleGoal:ASD|ASD|3000|False
+EternalGoal:ASD|ASD|2000
+ChecklistGoal:ASDASDASAD|ASDQWERSDVX|300|2|3000|0
